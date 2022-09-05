@@ -2,68 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50ae113d-7ed9-4df7-a2e4-c2d4955367d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postcss.config.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/grass-sprite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/socials/discord-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/rankings/gen1-rankings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/rankings/gen2-rankings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/rankings/gen3-rankings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/rankings/gen4-rankings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/stats/gen1-stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/stats/gen2-stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/stats/gen3-stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/stats/gen4-stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/total-ranking.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/async-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/context-menu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/labeled-form-control.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/limited-textarea.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/loading-display.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/modal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/head.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/social-btn.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/env/client.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/env/schema.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/env/server.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/base-layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/center-layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/auth/[...nextauth].ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/examples.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/restricted.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/create-profile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/signin.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/poke-ranking.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/poke-stats.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/sandbox.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/api/auth-endpoint.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/auth-redirects.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/db/client.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/pokemon/edge-mapping.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/pokemon/pokedex.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/pokemon/stat.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/router/context.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/router/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/router/pokemon.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/router/protected-router.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/next-auth.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/geometry.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/math.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/trpc.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tailwind.config.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +174,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662209738815</updated>
-      <workItem from="1662209739824" duration="84646000" />
+      <workItem from="1662209739824" duration="84786000" />
     </task>
     <servers />
   </component>
