@@ -2,7 +2,7 @@
 
 
 
-###TODO 
+### TODO 
 - [x] Pokemon Rolling endpoint. 
   - Roll generation, then roll for random pokemon, then roll for encounter chance. 
   - Think about how to handle encounter-methods for gift, giftegg, only-one
