@@ -1,42 +1,73 @@
-import Link from "next/link";
-import {signIn, signOut, useSession} from "next-auth/react";
-import SocialButton from "../components/social-btn";
+import {useSession} from "next-auth/react";
 import Head from "../components/head";
+import CenterLayout from "../layouts/center-layout";
+import classNames from "classnames";
+import {useState} from "react";
+import {trpc} from "../utils/trpc";
+import AsyncButton from "../components/common/async-button";
+import { Search, CheckCircle } from "react-feather"
+import {z} from "zod";
+import ErrorAlert from "../components/common/alerts/error-alert";
+import {randomIntRange} from "../utils/math";
+import { useRouter } from "next/router";
 
 
 export default function CreateProfile() {
   const session = useSession()
+  const router = useRouter()
+
+  const [name, setName] = useState("")
+
+  const {isLoading, mutate, data, reset, error} = trpc.useMutation("gachamon.check-name")
+  const createMutation = trpc.useMutation("gachamon.create-profile", {
+    onSuccess: () => router.push("/")
+  })
+  const possibleNames = ["AsheKetchup", "BasedJames", "TrustyFryingPanAsADryingPan"]
+
   return <>
     <Head title={"Create Profile - Gachamon"} description={"Gachamon create profile!"}/>
-
-    <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className="text-7xl leading-normal font-extrabold text-yellow-300">
-        <Link href={"/"}><a>GACHA<span className="text-blue-700">MON</span></a></Link>
-      </h1>
-      <div className="card bg-base-200 w-96 p-4 shadow">
-        {
-          session.status == "authenticated" ?
-            <div className={"flex flex-col gap-4"}>
-              <h3 className={"text-xl font-mono"}>You are already signed in!</h3>
-              <Link href={"/"}><a className="btn">Go home</a></Link>
-              <button className="btn" onClick={() => signOut()}>Sign out!</button>
-            </div> :
-            <>
-              <h3 className={"text-xl mb-4 font-mono"}>Sign In</h3>
-              <SocialButton
-                className="animate-wiggle"
-                alt={"Discord"}
-                svgPath={"/socials/discord-icon.svg"}
-                text={"Discord"}
-                onClick={() => signIn("discord")}
+    {
+      session.status == "authenticated" &&
+        <CenterLayout>
+          {
+            error && <ErrorAlert msg={parseErrMsg()} className={"mb-4"}/>
+          }
+          <div className={"flex flex-col gap-3"}>
+            <h3 className="text-xl font-mono">All right. What&apos;s your name?</h3>
+            <div className="input-group">
+              <input
+                type="text"
+                className={classNames("input w-full", {"input-success": data})}
+                value={name}
+                placeholder={possibleNames[randomIntRange(0, possibleNames.length)]}
+                onChange={e => {
+                  setName(e.target.value)
+                  reset()
+                }}
               />
-              {/*<div className="divider">OR</div>*/}
-              {/*<LabeledFormControl label={"Email"}>*/}
-              {/*  <input type="text" className="input" placeholder={"leet.trainer@poke.com"}/>*/}
-              {/*</LabeledFormControl>*/}
-            </>
-        }
-      </div>
-    </main>
+              <AsyncButton
+                loading={isLoading}
+                className={"btn-square"}
+                onClick={() => mutate(name)}
+              >
+                <Search />
+              </AsyncButton>
+            </div>
+            {
+              data && <AsyncButton
+                className={"btn btn-primary gap-2"}
+                loading={createMutation.isLoading}
+                onClick={() => createMutation.mutate(name)}
+              ><CheckCircle size={16}/> Create</AsyncButton>
+            }
+          </div>
+        </CenterLayout>
+    }
   </>
+
+  function parseErrMsg() {
+    const {errors} = new z.ZodError(JSON.parse(error?.message ?? "{}"))
+    return errors[0]?.message ?? "Error checking name"
+  }
 }
+

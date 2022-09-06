@@ -1,40 +1,36 @@
-import Head from "next/head";
-import Image from "next/image";
-import {trpc} from "../utils/trpc";
-import LoadingDisplay from "../components/common/loading-display";
 import {GetServerSidePropsContext} from "next";
 import {authRedirects} from "../server/auth-redirects";
+import Navbar from "../components/navbar";
+import Head from "../components/head";
+import {HardDrive} from "react-feather";
+import GachaRoller from "../components/gacha/gacha-roller";
+import React from "react";
+import Link from "next/link";
 
 
 export default function Home() {
-
-  //isIdle when page first started but hasn't fetched any data yet. it's "Idle"
-  const {isIdle, isLoading, data, mutate } = trpc.useMutation(["pokemon.roll"])
   return (<>
-    <Head>
-      <title>Gachamon</title>
-      <meta name="description" content="Gotta catch them all" />
-      <link rel="icon" href="./favicon.ico" />
-    </Head>
-
-    <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-yellow-300">
-        GACHA<span className="text-blue-700">MON</span>
-      </h1>
-      <div className="flex flex-col w-full gap-4 items-center">
-        {
-          isLoading || data == undefined ?
-            <LoadingDisplay /> :
-            <>
-              <p className={"uppercase font-mono font-semibold"}>{data.name}</p>
-              <Image alt={data.name} src={data.sprite} width={"150"} height={"150"} />
-            </>
-        }
-        <button className="btn w-1/3" onClick={_ => mutate()}>Re-roll</button>
-      </div>
-    </main>
+    <Head title={"Gachamon"} description={"Gotta catch them all"}/>
+    <div className="flex flex-col h-screen">
+      <Navbar />
+      <main className="flex-1 flex">
+        <Sidebar />
+        <div className="flex-1 mt-8">
+          <GachaRoller />
+        </div>
+      </main>
+    </div>
   </>);
+
 };
+
+function Sidebar() {
+  return <div className="w-16 bg-base-200 border-r border-gray-700 shadow flex flex-col items-center py-8">
+    <Link href={"/pc"}>
+      <a className="btn btn-square btn-ghost flex-col" title={"Access your PC."}><HardDrive /> PC</a>
+    </Link>
+  </div>
+}
 
 export async function getServerSideProps({req, res}: GetServerSidePropsContext) {
   const redirects = await authRedirects(req, res)

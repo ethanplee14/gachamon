@@ -14,10 +14,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Pokemon {
+  id        String   @id @default(cuid())
+  name      String
+  pokemonId Int
+  ownerId   String
+  owner     Gachamon @relation(fields: [ownerId], references: [id])
+  nick      String?
+}
+
 model Gachamon {
-  username String @unique
-  userId   String @unique
-  user     User   @relation(fields: [userId], references: [id])
+  id         String    @id @default(cuid())
+  username   String    @unique
+  userId     String    @unique
+  user       User      @relation(fields: [userId], references: [id])
+  rolls      Int       @default(6)
+  lastRolled DateTime?
+  pokemon    Pokemon[]
 }
 
 // Necessary for Next auth
